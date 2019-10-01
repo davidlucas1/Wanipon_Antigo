@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="backMenu">
+    <ion-buttons slot="start" class="branco">
+      <ion-menu-button>
+        <ion-icon ios="ios-more" md="md-more"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo">
+      WANIPON
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <!--<ion-infinite-scroll threshold="100px"  >
+    <ion-infinite-scroll-content  >-->
+        <a (click)="navegar('animeinfo')">
+          <img src="/assets/darker-than-black.jpg"/>
+      
+      <div class="AnimedaSemana" >Anime da Semana</div></a>
+      
+      <div class="textin">Últimos Lançamentos:</div>
+      <a (click)="navegar('animeinfo')">
+      <div class="titani">Lord El-Melloi II’s Case Files: Rail Zeppelin Grace Note</div>
+      <div class="episem">Episódio 06</div>
+      <img src="/assets/an1.jpg" class="semimg"/></a>
+      <a (click)="navegar('animeinfo')">
+      <div class="titani">Demon Slayer</div>
+      <div class="episem">Episódio 19</div>
+      <img src="/assets/an2.jpg" class="semimg" /></a>
+      <a (click)="navegar('animeinfo')">
+      <div class="titani">Fire Force</div>
+      <div class="episem">Episódio 10</div>
+      <img src="/assets/animestemporada/4.jpg" class="semimg" /></a>
+    <!--</ion-infinite-scroll-content>
+  </ion-infinite-scroll></ion-content>-->
+<!-- (ionInfinite)="loadData($event)" loadingSpinner="bubbles" loadingText="Loading...class="AniSem" -->
