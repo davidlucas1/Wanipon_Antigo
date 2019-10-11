@@ -1,7 +1,10 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { environment } from '../../environments/environment';
+
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-animeinfo',
@@ -12,7 +15,9 @@ export class AnimeinfoPage implements OnInit {
 
   constructor( 
     public navCtrl : NavController,
-    public db : AngularFireDatabase
+    public db : AngularFireDatabase,
+    private store: AngularFirestore,
+
     ){}
    navegar(pagina) {
     this.navCtrl.navigateForward(pagina);
@@ -26,9 +31,11 @@ export class AnimeinfoPage implements OnInit {
   }
 
   get(){
+  }
 
-
+  salvar() {
 
   }
 
+  
 }
