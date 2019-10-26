@@ -26,7 +26,9 @@ const routes: Routes = [
   { path: 'ajuda', loadChildren: './ajuda/ajuda.module#AjudaPageModule' },
   { path: 'desejos', loadChildren: './desejos/desejos.module#DesejosPageModule' },
   { path: 'sobre', loadChildren: './sobre/sobre.module#SobrePageModule' },
-  { path: 'contribuir', loadChildren: './contribuir/contribuir.module#ContribuirPageModule' }
+  { path: 'contribuir', loadChildren: './contribuir/contribuir.module#ContribuirPageModule' },
+  { path: 'idea-list', loadChildren: './idea-list/idea-list.module#IdeaListPageModule' },
+  { path: 'idea-details', loadChildren: './idea-details/idea-details.module#IdeaDetailsPageModule' }
 ];
 
 @NgModule({

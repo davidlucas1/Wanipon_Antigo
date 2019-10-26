@@ -13,13 +13,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="bg">
+<ion-content class="bg" *ngFor="let idea of (ideas | async)">
   <img src="/assets/an2.jpg" />
-  <div class="titpagani">Demon Slayer</div>
+  <div class="titpagani">
+      {{ idea.nome }}
+  </div>
   <div class="sinopse">Desde a morte de seu pai, o fardo de sustentar a família recai sobre os ombros de Tanjirou Kamado. Embora vivendo empobrecidos em uma montanha remota, a família Kamado pode desfrutar de uma vida relativamente pacífica e feliz. Um dia, Tanjirou decide ir até a vila local para ganhar um pouco de dinheiro vendendo carvão. No caminho de volta, a noite cai, forçando Tanjirou a se abrigar na casa de um homem estranho, que o adverte da existência de demônios devoradores de carne que espreitam na floresta à noite.
 
     Quando ele finalmente chega em casa no dia seguinte, ele recebe uma visão horrível - toda a sua família foi assassinada. Pior ainda, o único sobrevivente é sua irmã Nezuko, que se transformou em um demônio sedento de sangue. Consumido pela raiva e pelo ódio, Tanjirou jura vingar sua família e ficar com seu único irmão restante. Ao lado do misterioso grupo que se autodenomina Corpo de Extermínio, Tanjirou fará o que for preciso para matar os demônios e proteger os remanescentes da humanidade de sua amada irmã.</div>
-<div class="br"></div><a class="infotag" >Sinônimo</a><a class="infoani">Kimetsu No Yaiba</a>
+<div class="br"></div><a class="infotag" >Sinônimo</a><a class="infoani">{{ idea.sinonimo }}</a>
 <div class="br"></div><a class="infotag">Genêro</a><a class="infoani">Ação, Demônio, Histórico, Shounen, Sobrenatural</a>
 <div class="br"></div><a class="infotag">Data</a><a class="infoani">6 Abril de 2019</a>
 <div class="br"></div><a class="infotag">Estúdio</a><a class="infoani">Ufotable</a>
@@ -50,6 +52,7 @@
 <div class="epi">25  -  23:00</div>
 
 
-    <button type="button" (click)="salvar()">Atualizar</button> 
+    <button type="button" (click)="salvar()">Salvar</button> 
+ 
 
-    
+  

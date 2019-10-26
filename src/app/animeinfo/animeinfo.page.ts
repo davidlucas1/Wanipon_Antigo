@@ -1,10 +1,20 @@
 
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+
+
+import { AngularFirestoreModule, AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { NodeStringDecoder } from 'string_decoder';
+
+import { IdeaService, Idea } from 'src/app/service/list-animes.service';
+
+@Injectable()
+
 
 @Component({
   selector: 'app-animeinfo',
@@ -13,29 +23,23 @@ import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestor
 })
 export class AnimeinfoPage implements OnInit {
 
+  private ideas: Observable<Idea[]>;
+
+
   constructor( 
     public navCtrl : NavController,
-    public db : AngularFireDatabase,
     private store: AngularFirestore,
+    private ideaService: IdeaService
+    ){
 
-    ){}
+    }
    navegar(pagina) {
     this.navCtrl.navigateForward(pagina);
   }
 
   ngOnInit() {
+    this.ideas = this.ideaService.getIdeas();
   }
 
-  inform(){
-    this.db.database.ref('/info').push();
-  }
-
-  get(){
-  }
-
-  salvar() {
-
-  }
-
-  
 }
+
