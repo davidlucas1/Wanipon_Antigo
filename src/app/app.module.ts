@@ -14,16 +14,19 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { PopoverComponent } from './popover/popover.component';
+import { AnimeinfoPageModule } from './animeinfo/animeinfo.module';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, PopoverComponent],
+  entryComponents: [PopoverComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
+    AnimeinfoPageModule,
     AngularFirestoreModule,
     AngularFirestoreModule
   ],

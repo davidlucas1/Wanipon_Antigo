@@ -12,7 +12,7 @@
 </ion-header>
 <ion-content class="bg">
 <a class="titpag">Gerador de Animes</a><br/>
-<a class="filtro">Filtro</a><br/>
+<a class="filtro" (click)="presentPopover($event)">Filtro</a><br/>
 <div class="alinharfiltros"><a class="tagfil">2019</a><a class="tagfil">Sci-Fi</a><a class="tagfil">Psicológico</a></div><br/>
-<a class="sortbut">SORTEAR ANIME</a><br/>
-<div class="cardanime" (click)="navegar('animeinfo')"><img src="../../assets/ynn.jpg"><a class="nomeani">The Promised Neverland</a></div>
+<a class="sortbut" (click)="sortear()">SORTEAR ANIME</a><br/>
+<div class="cardanime" (click)="navegar('animeinfo')" *ngIf="this.animeSorteado"><img [src]="this.animeSorteado.imagem"><a class="nomeani">{{this.animeSorteado.nome}}</a></div>
