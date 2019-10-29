@@ -11,8 +11,21 @@ import { ToastController } from '@ionic/angular';
 export class IdeaDetailsPage implements OnInit {
  
   idea: Idea = {
+    ano: null,
+    assistir: '',
+    data: '',
+    episodios: null,
+    estudio: '',
+    indicaçao: '',
     nome: '',
-    sinonimo: ''
+    NivelDeIndicacao: null,
+    origem: '',
+    perfil: '',
+    screenshots: '',
+    sinopse: '',
+    sinonimo: '',
+    status: '',
+    áudio: '',
   };
  
   constructor(private activatedRoute: ActivatedRoute, private ideaService: IdeaService,
