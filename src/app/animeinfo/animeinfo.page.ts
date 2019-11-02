@@ -28,7 +28,7 @@ export class AnimeinfoPage implements OnInit {
     {
       nome : "Demon Slayer",
       ultimoEpisodio : "26",
-      imagemzinha : "/assets/an2.jpg"
+      imagemzinha : "/assets/an2.jpg",
     }
     ,
     {
@@ -39,6 +39,7 @@ export class AnimeinfoPage implements OnInit {
   ]
 
   private ideas: Observable<Idea[]>;
+  
 
 
   constructor( 
@@ -48,6 +49,10 @@ export class AnimeinfoPage implements OnInit {
     private route: ActivatedRoute
     ){
       this.nome = this.route.snapshot.paramMap.get('nome')
+      this.store.collection("lista").doc(this.nome).get().toPromise()
+      .then(anime=>{
+        console.log(anime.data());
+      })
     }
    navegar(pagina) {
     this.navCtrl.navigateForward(pagina);
@@ -60,7 +65,10 @@ export class AnimeinfoPage implements OnInit {
   ngOnInit() {
     this.ideas = this.ideaService.getIdeas();
   }
-  
+
+  InfomacaoDoAnime(){
+
+  }
 
 }
 

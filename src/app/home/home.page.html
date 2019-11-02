@@ -18,7 +18,11 @@
 <div class="AnimedaSemana" >Anime da Semana</div></a>
 
 <div class="textin">Últimos Lançamentos:</div>
-<a (click)="iranimeinfo(i.nome)" *ngFor="let i of semanais">
-<div class="titani">{{ i.nome }}</div>
-<div class="episem">{{ i.ultimoEpisodio }}</div>
-<img [src]="i.imagemzinha" class="semimg"/></a>
+<div *ngIf="semanais ===undefined; else tt">Nenhum ep novo</div>
+<ng-template #tt>
+  <a (click)="iranimeinfo(i.id)" *ngFor="let i of semanais" >
+    <div class="titani">{{ i.nome }}</div>
+    <div class="episem">{{ i.ultimoEpisodio }}</div>
+    <img [src]="i.imagem" class="semimg"/>
+  </a>
+</ng-template>

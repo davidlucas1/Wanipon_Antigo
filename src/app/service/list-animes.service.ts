@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
+import { AngularFireStorageReference } from '@angular/fire/storage';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+
+
  
 export interface Idea {
   id?: string,
@@ -15,7 +19,6 @@ export interface Idea {
   nome: string,
   NivelDeIndicacao: string,
   origem: string,
-  perfil:string,
   screenshots:string,
   sinopse: string,
   sinonimo: string,
@@ -27,11 +30,17 @@ export interface Idea {
   providedIn: 'root'
 })
 export class IdeaService {
+
+
   private ideas: Observable<Idea[]>;
   private ideaCollection: AngularFirestoreCollection<Idea>;
  
-  constructor(private afs: AngularFirestore) {
+  constructor(
+    private afs: AngularFirestore,
+    
+    ) {
     this.ideaCollection = this.afs.collection<Idea>('lista');
+
     this.ideas = this.ideaCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -41,6 +50,7 @@ export class IdeaService {
         });
       })
     );
+
   }
  
   getIdeas(): Observable<Idea[]> {
@@ -68,4 +78,9 @@ export class IdeaService {
   deleteIdea(id: string): Promise<void> {
     return this.ideaCollection.doc(id).delete();
   }
+
+  getAnime(){
+
+  }
+  
 }

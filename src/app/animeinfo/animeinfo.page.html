@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content class="bg" *ngFor="let idea of (ideas | async)">
-  <img src="/assets/an2.jpg" />
+
   <div class="titpagani">
       {{ idea.nome }}
   </div>
@@ -52,7 +52,7 @@
 <div class="epi">{{nome}}</div>
 <a *ngFor = "let i of semanais">
   <a *ngIf = "animeh(i)">
-    {{i.nome}} {{i.ultimoEpisodio}}{{i.imagemzinha}}
+    {{i.nome}} {{i.ultimoEpisodio}}{{i.imagemzinha}}{{i.id}}
   </a>
 </a>
 <br/> 

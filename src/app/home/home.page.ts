@@ -1,6 +1,11 @@
 import { Component} from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { IdeaService, Idea } from 'src/app/service/list-animes.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,26 +13,31 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   public iden;
-  public semanais = [
-    {
-      nome : "Lord El-Melloi II’s Case Files: Rail Zeppelin Grace Note",
-      ultimoEpisodio : "06",
-      imagemzinha : "/assets/an1.jpg"
-    },
-    {
-      nome : "Demon Slayer",
-      ultimoEpisodio : "26",
-      imagemzinha : "/assets/an2.jpg"
-    }
-    ,
-    {
-      nome : "Fire Force",
-      ultimoEpisodio : "10",
-      imagemzinha : "/assets/animestemporada/4.jpg"
-    }
-  ]
+  public semanais;
+  ultimos: firebase.firestore.Query;
+  constructor(
+    public navCtrl : NavController,
+    private router : Router,
+    private afs: AngularFirestore,
+    ){
+      this.ultimos = this.afs.collection('ultimos').ref.orderBy("data","desc").limit(5);
+      this.ultimos.get()
+      .then(dado=>{
+        
+        this.semanais = [];
+        dado.forEach(docs=>{
+          //console.log(docs.data())
 
-  constructor(public navCtrl : NavController, private router : Router) {}
+          const data = docs.data();
+          const id = docs.id;
+this.semanais.push({id, ...data})
+
+
+        })
+
+        console.log(this.semanais);
+      });
+    }
    navegar(pagina){
     this.navCtrl.navigateForward(pagina);
   }
