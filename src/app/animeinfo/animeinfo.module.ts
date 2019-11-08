@@ -9,7 +9,7 @@ import { AnimeinfoPage } from './animeinfo.page';
 
 const routes: Routes = [
   {
-    path: ':nome',
+    path: ':id',
     component: AnimeinfoPage
   }
 ];

@@ -15,11 +15,14 @@
   <ion-icon name="search" class="icon"></ion-icon>
   <a class="filtro">Filtro</a>
   <br/><a class="tagfil">Ação</a><br/><br/>
-  <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/1.jpg" class="animg"/>
-    <a class="titanitemp">Vinland Saga</a></div><br/>
-    <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/2.jpg" class="animg"/>
-      <a class="titanitemp">Cop Craft</a></div><br/>
-  <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/3.jpg" class="animg"/>
-    <a class="titanitemp"> Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka temporada 2</a></div><br/>
-    <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/4.jpg" class="animg"/>
-      <a class="titanitemp">Enen No Shouboutai</a></div></ion-content>
+
+      <div *ngIf="anime ===undefined; else tt">CARREGANDO</div>
+      <ng-template #tt>
+        <a (click)="iranimeinfo(i.id)" *ngFor="let i of anime" >
+          <div style="background-color: #252525" (click)="navegar('animeinfo')"><img [src]="i.perfil" class="animg"/>
+            <a class="titanitemp">{{ i.nome }}</a></div><br/>
+        </a>
+      </ng-template>
+    
+    </ion-content>
+      

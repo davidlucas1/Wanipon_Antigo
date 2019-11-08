@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-geradoranime',
@@ -8,16 +9,37 @@ import { PopoverComponent } from '../popover/popover.component';
   styleUrls: ['./geradoranime.page.scss'],
 })
 export class GeradoranimePage implements OnInit {
-  animes = [
-    {nome: "Demon Slayer", imagem: "../../assets/desejos/1.jpg"},
-    {nome: "No Guns Life", imagem: "/assets/desejos/2.jpg"},
-    {nome: "Fate/Grand Order", imagem: "/assets/desejos/3.jpg"},
-    {nome: "Vinland Saga", imagem: "/assets/desejos/4.jpg"},
-    {nome: "Sword Art Online Alicization", imagem: "/assets/desejos/5.jpg"},
-    {nome: "Code Geass", imagem: "/assets/desejos/6.jpg"}];
+  animes = [];
   animeSorteado;
+  sorteio: firebase.firestore.Query;
 
-  constructor(public navCtrl : NavController, public popoverController: PopoverController) { this.animeSorteado = null;}
+  constructor(public navCtrl : NavController,
+     public popoverController: PopoverController,
+     private afs: AngularFirestore,
+     ){
+       this.animeSorteado = null;
+
+       this.sorteio = this.afs.collection('lista').ref.orderBy("nome");
+      this.sorteio.get()
+      .then(dado=>{
+        
+        this.animes = [];
+        dado.forEach(docs=>{
+          //console.log(docs.data())
+
+          const data = docs.data();
+          const id = docs.id;
+          const nome = docs.data().nome;
+          const baner = docs.data().baner;
+            this.animes.push({id,nome,baner})
+
+
+        })
+
+        console.log(this.animes);
+      });
+      }
+
   navegar(pagina) {
     this.navCtrl.navigateForward(pagina);
   }
@@ -39,6 +61,11 @@ sortear(){
 }
 
   ngOnInit() {
+  }
+
+  iranimeinfo(uuid) {
+    this.navCtrl.navigateForward(`animeinfo/${uuid}`);
+    // this.irParaPagina('conversa/' + uuid + '');
   }
 
 }

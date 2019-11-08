@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 import { DataService } from '../service/data.service';
+import { Router } from '@angular/router';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -11,8 +15,40 @@ export class ListPage implements OnInit {
   public otorapa;
   public barraPesquisa;
   public pesquisa;
-  constructor(public navCtrl : NavController, public popoverController: PopoverController, private data: DataService) {
+
+  public anime;
+  public lista;
+  ordem: firebase.firestore.Query;
+
+  constructor(
+    public navCtrl : NavController,
+    public popoverController: PopoverController,
+    private data: DataService,
+    private router : Router,
+    private afs: AngularFirestore,
+    ) {
     this.barraPesquisa = false;
+
+    this.ordem = this.afs.collection('lista').ref.orderBy("nome").limit(5);
+      this.ordem.get()
+      .then(dado=>{
+        
+        this.lista = [];
+        dado.forEach(docs=>{
+          //console.log(docs.data())
+
+          const data = docs.data();
+          const id = docs.id;
+          const nome = docs.data().nome;
+          const baner = docs.data().baner;
+            this.lista.push({id,nome,baner})
+
+
+        })
+
+        //console.log(this.lista);
+      });
+
   }
   navegar(pagina) {
     this.navCtrl.navigateForward(pagina);
@@ -34,5 +70,10 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
     this.data.currentMessage.subscribe(animemassa => this.otorapa = animemassa);
+  }
+  
+  iranimeinfo(uuid) {
+    this.navCtrl.navigateForward(`animeinfo/${uuid}`);
+    // this.irParaPagina('conversa/' + uuid + '');
   }
 }

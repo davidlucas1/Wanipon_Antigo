@@ -53,6 +53,7 @@
     width: 200px;
     height: 320px;
     margin-left: 74px;
+    overflow: hidden;
 }
 .nomeani{
     position: relative;
@@ -61,4 +62,9 @@
     display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bunequinaqui{
+    width: 190px;
+    height: 275px;
 }

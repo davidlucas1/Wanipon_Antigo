@@ -5,12 +5,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  public animemassa;
+  public animemassa = [];
   public messageSource = new BehaviorSubject(this.animemassa);
   currentMessage = this.messageSource.asObservable();
 
   constructor() {
-    this.animemassa = "Kimetsu né fi";
+    //this.animemassa = [];
    }
   changeMessage(seila){
     this.messageSource.next(seila);

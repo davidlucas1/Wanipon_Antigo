@@ -1,9 +1,3 @@
-.titpag{
-    color: white;
-    margin-left: 5px;
-    font-size: 27px;
-    font-family: league gothic;
-}
 .bgmsg{
     margin-top: 5px;
     background-color: #252525;
@@ -21,9 +15,19 @@
     margin: 5px;
     overflow: visible;
     font-size: 17px;
+    bottom: 10px;
 }
-.suamsg{
+
+.asf{
+    display: flex;
+    justify-content: center;
+}
+.asf a {
+    font-family: league gothic;
+    color: white;
+    font-size: 37px;
     background-color: #252525;
-    padding: 5px;
-    width: 100%;
+    padding: 0 10px 0 10px;
+    margin: 5px 10px 0 10px;
+    border-radius: 15px;
 }

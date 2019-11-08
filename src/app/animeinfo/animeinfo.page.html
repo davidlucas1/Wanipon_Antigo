@@ -13,8 +13,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="bg" *ngFor="let idea of (ideas | async)">
-
+<ion-content class="bg" >
+    <div *ngIf="idea === undefined; else tt" class="load">CARREGANDO</div>
+  <ng-template #tt>
+  <img [src]="idea.perfil"/>
   <div class="titpagani">
       {{ idea.nome }}
   </div>
@@ -49,12 +51,7 @@
 <div class="epi">22  -  23:00</div><div class="epi">23  -  23:00</div><div class="epi">24  -  23:00</div>
 <div class="epi">25  -  23:00</div>
 <div style="clear:both;"></div>
-<div class="epi">{{nome}}</div>
-<a *ngFor = "let i of semanais">
-  <a *ngIf = "animeh(i)">
-    {{i.nome}} {{i.ultimoEpisodio}}{{i.imagemzinha}}{{i.id}}
-  </a>
-</a>
-<br/> 
 
+<br/> 
+</ng-template>
 

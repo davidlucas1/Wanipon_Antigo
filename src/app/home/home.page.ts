@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { IdeaService, Idea } from 'src/app/service/list-animes.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +11,6 @@ import { IdeaService, Idea } from 'src/app/service/list-animes.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public iden;
   public semanais;
   ultimos: firebase.firestore.Query;
   constructor(
@@ -35,12 +33,13 @@ this.semanais.push({id, ...data})
 
         })
 
-        console.log(this.semanais);
+        //console.log(this.semanais);
       });
     }
    navegar(pagina){
     this.navCtrl.navigateForward(pagina);
   }
+  
   iranimeinfo(uuid) {
     this.navCtrl.navigateForward(`animeinfo/${uuid}`);
     // this.irParaPagina('conversa/' + uuid + '');

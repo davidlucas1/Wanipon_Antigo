@@ -15,4 +15,10 @@
 <a class="filtro" (click)="presentPopover($event)">Filtro</a><br/>
 <div class="alinharfiltros"><a class="tagfil">2019</a><a class="tagfil">Sci-Fi</a><a class="tagfil">Psicológico</a></div><br/>
 <a class="sortbut" (click)="sortear()">SORTEAR ANIME</a><br/>
-<div class="cardanime" (click)="navegar('animeinfo')" *ngIf="this.animeSorteado"><img [src]="this.animeSorteado.imagem"><a class="nomeani">{{this.animeSorteado.nome}}</a></div>
+
+<div *ngIf="animes === undefined; else tt" class="load">CARREGANDO</div>
+      <ng-template #tt>
+        <a (click)="iranimeinfo(this.animeSorteado.id)">
+          <div class="cardanime" (click)="navegar('animeinfo')" *ngIf="this.animeSorteado"><img [src]="this.animeSorteado.baner" class='bunequinaqui'><a class="nomeani">{{this.animeSorteado.nome}}</a></div>
+        </a>
+</ng-template>

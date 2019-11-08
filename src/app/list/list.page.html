@@ -24,14 +24,12 @@
   </div>
   <a *ngIf="this.barraPesquisa"><ion-input name="pesquisa" type="text" [(ngModel)]="pesquisa" style="background-color: white"></ion-input></a>
   <a *ngIf="this.pesquisa">{{this.pesquisa}}</a><br/>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i1.jpg" class="bunequinaqui"/><a class="titanitemp">3-Gatsu No Lion</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i2.jpg" class="bunequinaqui"/><a class="titanitemp">Ajin</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i3.jpg" class="bunequinaqui"/><a class="titanitemp">Ajin Temporada 2</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i4.jpg" class="bunequinaqui"/><a class="titanitemp">Ajin OVA</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i5.jpg" class="bunequinaqui"/><a class="titanitemp">Ajin Parte 2: Shoutotsu</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i6.png" class="bunequinaqui"/><a class="titanitemp">Ajin Parte 3: Shougeki</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i7.png" class="bunequinaqui"/><a class="titanitemp">All Out!!</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i8.jpg" class="bunequinaqui"/><a class="titanitemp">Amaama To Inazuma</a></div>
-<div class="cardanime2" (click)="navegar('animeinfo')"><img src="/assets/imglist/i9.jpg" class="bunequinaqui"/><a class="titanitemp">Bakuon!!</a></div>
+
+<div *ngIf="lista ===undefined; else tt" class="load">CARREGANDO LISTA</div>
+<ng-template #tt>
+  <a (click)="iranimeinfo(i.id)" *ngFor="let i of lista" >
+    <div class="cardanime2" (click)="navegar('animeinfo')"><img [src]="i.baner" class="bunequinaqui"/><a class="titanitemp">{{ i.nome }}</a></div>
+  </a>
+</ng-template>
 
 </ion-content>

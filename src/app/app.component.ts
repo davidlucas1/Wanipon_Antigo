@@ -54,14 +54,6 @@ export class AppComponent {
     {
       title: 'Contribuir',
       url: '/contribuir',
-    },
-    {
-      title: 'idea',
-      url: '/idea-list',
-    },
-    {
-      title: 'idea detalhes',
-      url: '/idea-details',
     }
   ];
 

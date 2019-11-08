@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar class="backMenu">
+    <ion-buttons slot="start" class="branco">
+    </ion-buttons>
+    <ion-title class="titulo" style="margin-left: 110px;">
+      WANIPON
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg">
+<div class="bgmsg">Email<div class="msg"><ion-input name="email" type="text" [(ngModel)]="email" onfocus="this.value='';"></ion-input></div></div>
+<div class="bgmsg">Senha<div class="msg"><ion-input name="senha" type="password" [(ngModel)]="senha" onfocus="this.value='';"></ion-input></div></div>
+<div class="asf"><a class="sortbut" (click)="criaConta(email, senha)">Criar Conta</a>
+  <a class="sortbut" (click)="entrar(email, senha)">Entrar</a></div>
+</ion-content>

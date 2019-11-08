@@ -13,13 +13,12 @@
   <ion-content class="bg">
     <a class="titpag">Animes Anunciados</a><br/>
     <ion-icon name="search" class="icon"></ion-icon><br/><br/>
-    <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animes_anunciados/1.jpg" class="animg"/>
-      <a class="titanitemp">Boku no Hero Academia temporada 4</a></div><br/>
-      <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animes_anunciados/2.jpg" class="animg"/>
-        <a class="titanitemp">Fairy Gone</a></div><br/>
-    <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animes_anunciados/3.jpg" class="animg"/>
-      <a class="titanitemp">Fate/Grand Order: Zettai Majuu Sensen Babylonia</a></div><br/>
-      <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animes_anunciados/4.jpg" class="animg"/>
-        <a class="titanitemp">No Guns Life</a></div>
+        <div *ngIf="anime ===undefined; else tt">CARREGANDO</div>
+      <ng-template #tt>
+        <a (click)="iranimeinfo(i.id)" *ngFor="let i of anime" >
+            <div style="background-color: #252525" (click)="navegar('animeinfo')"><img [src]="i.perfil" class="animg"/>
+              <a class="titanitemp">{{ i.nome }}</a></div><br/>
+        </a>
+      </ng-template>
     
   </ion-content>
