@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="backMenu">
+    <ion-buttons slot="start" class="branco">
+      <ion-menu-button>
+        <ion-icon ios="ios-more" md="md-more"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo" (click)="navegar('home')">
+      WANIPON
+    </ion-title>
+    <ion-icon name="add" slot="end" class="heart-icon"></ion-icon>
+    <ion-icon name="heart-empty" slot="end" class="heart-icon"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/idea">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+ 
+  <ion-list>
+    <ion-item button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (ideas | async)">
+      {{ idea.nome }}
+      {{ idea.episodios }}
+      {{ idea.sinonimo }}
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar class="backMenu">
+    <ion-buttons slot="start" class="branco">
+      <ion-menu-button>
+        <ion-icon ios="ios-more" md="md-more"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titulo" (click)="navegar('home')">
+      WANIPON
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg">
+  <a class="titpag">Animes da Temporada</a><br/>
+  <ion-icon name="search" class="icon"></ion-icon>
+  <a class="filtro">Filtro</a>
+  <br/><a class="tagfil">Ação</a><br/><br/>
+  <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/1.jpg" class="animg"/>
+    <a class="titanitemp">Vinland Saga</a></div><br/>
+    <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/2.jpg" class="animg"/>
+      <a class="titanitemp">Cop Craft</a></div><br/>
+  <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/3.jpg" class="animg"/>
+    <a class="titanitemp"> Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka temporada 2</a></div><br/>
+    <div style="background-color: #252525" (click)="navegar('animeinfo')"><img src="../../assets/animestemporada/4.jpg" class="animg"/>
+      <a class="titanitemp">Enen No Shouboutai</a></div></ion-content>
