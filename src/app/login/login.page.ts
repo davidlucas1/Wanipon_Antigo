@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -7,28 +10,86 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  conta = [{email : "arroz", senha : "joia"}];
+
+  usuario = { email: '', senha: '' };
+  usuarioFirebase;
+  colecaoFirebase;
   //email;
   //senha;
 
-  constructor(public navCtrl : NavController) { 
-    this.conta.push({email : "arrozal", senha : "joias"});
-}
-  criaConta(email, senha){
-    let a = false;
-    for(let i = 0; i < this.conta.length; i++){
-      if(this.conta[i].email == email && this.conta[i].senha == senha){
-        console.log("massa"); a = true;
-        break
-      }
+  logout() {
+    // this.afa.auth.signOut();
+
+    console.log(this.colecaoFirebase);
+
   }
-  if(a == false){
-  this.conta.push({email : email, senha : senha});
-    console.log(this.conta)} }
-  entrar(email, senha){
-    for(let i = 0; i < this.conta.length; i++){
-      if(this.conta[i].email == email && this.conta[i].senha == senha){this.navCtrl.navigateForward("home")}
-      else{console.log("what bad...")}}}
+
+  logar() {
+    this.afa.auth.signInWithEmailAndPassword(
+      this.usuario.email,
+      this.usuario.senha
+    )
+    .then(sucesso => {this.navCtrl.navigateForward("home"); })
+    .catch(erro => {alert('O Email ou a Senha está errado'); });
+  }
+  logarfb() {
+    this.afa.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .then(sucesso => {this.navCtrl.navigateForward("home"); })
+    .catch(erro => {console.log(erro); });
+  }
+
+  registrar() {
+    this.afa.auth
+      .createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
+      .then(usuarioFirebase => {
+        console.log('deu certo');
+        console.log(usuarioFirebase);
+      })
+      .catch(erro => {
+        console.log('erro');
+        console.log(erro);
+      });
+  }
+
+  constructor(
+    public navCtrl : NavController,
+    private afa: AngularFireAuth,
+    private store: AngularFirestore
+    ) { 
+
+    this.usuarioFirebase = this.afa.authState;
+
+    this.store.collection('usuarios').snapshotChanges()
+      .subscribe(dados => {
+        this.colecaoFirebase = dados;
+      });
+
+}
+
+ 
+
+  salvar() {
+    this.store.collection('usuarios').add({
+      email: this.usuario.email,
+      senha: this.usuario.senha,
+    });
+  }
+
+  atualizar(item) {
+    this.store.collection('usuarios')
+      .doc(item.payload.doc.id)
+      .set({
+        nome: 'tay',
+        nota: 5,
+        materia: 'alg 2',
+      }, {merge: true});
+  }
+
+  delete(id) {
+    this.store.collection('usuarios')
+      .doc(id)
+      .delete();
+  }
 
   ngOnInit() {
   }

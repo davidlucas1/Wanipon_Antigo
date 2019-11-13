@@ -12,10 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { PopoverComponent } from './popover/popover.component';
 import { AnimeinfoPageModule } from './animeinfo/animeinfo.module';
+
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { AnimeinfoPageModule } from './animeinfo/animeinfo.module';
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     AnimeinfoPageModule,
+    AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFirestoreModule
   ],

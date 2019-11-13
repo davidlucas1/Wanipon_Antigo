@@ -18,16 +18,20 @@
     bottom: 10px;
 }
 
+
 .asf{
-    display: flex;
-    justify-content: center;
-}
-.asf a {
     font-family: league gothic;
     color: white;
     font-size: 37px;
-    background-color: #252525;
     padding: 0 10px 0 10px;
     margin: 5px 10px 0 10px;
     border-radius: 15px;
+}
+
+.back-branco{
+    --ion-background-color: #ffffff;
+}
+
+ion-button{
+    --ion-color: #252525;
 }
