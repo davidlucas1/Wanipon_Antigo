@@ -30,7 +30,16 @@ export class LoginPage implements OnInit {
       this.usuario.senha
     )
     .then(sucesso => {this.navCtrl.navigateForward("home"); })
-    .catch(erro => {alert('O Email ou a Senha está errado'); });
+    .catch(
+      function presentAlert() {
+      const alert = document.createElement('ion-alert');
+      alert.header = 'Erro';
+      alert.message = 'Senha ou Email está incorreto';
+      alert.buttons = ['OK'];
+    
+      document.body.appendChild(alert);
+      return alert.present();
+    });
   }
   logarfb() {
     this.afa.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
@@ -93,5 +102,4 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-
 }

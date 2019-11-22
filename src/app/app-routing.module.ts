@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'desejos', loadChildren: './desejos/desejos.module#DesejosPageModule' },
   { path: 'sobre', loadChildren: './sobre/sobre.module#SobrePageModule' },
   { path: 'contribuir', loadChildren: './contribuir/contribuir.module#ContribuirPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
 ];
 
 @NgModule({
